@@ -80,7 +80,7 @@ public:
     }
 };
 
-
+#if 0
 int main()
 {
     DeviceSmartPtr* ptr_device;
@@ -182,7 +182,7 @@ int main()
     //sub s1 = 14.8;
 	return 0;
 }
-
+#endif
 std::ostream& operator<<(std::ostream& stream, const sub& obj)
 {
     stream << obj.m_length;
