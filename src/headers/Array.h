@@ -50,7 +50,7 @@ public:
         Iterator& operator++(int)
         {
             Iterator* tmp = this;
-            m_itr++;
+            ++(*this);
             return *tmp;
         }
 

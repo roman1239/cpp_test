@@ -10,6 +10,7 @@
 #include <vector>
 #include <memory>
 #include <cstring>
+#include <algorithm>
 
 #include "test.h"
 #include "String.h"
@@ -433,6 +434,8 @@ int main()
 
     Array<int,5>::Iterator it = a1.begin();
 
+    std::fill(a1.begin(), a1.end(), 5);
+
     it[1] = 1;
 
     for(int i = 0; i < a1.Size(); i++)
@@ -452,6 +455,20 @@ int main()
         cout << i << " ";
     cout << endl;
 
+    Array<std::string,5> a2;
+    a2[0] = "asdads";
+    a2[1] = "rde23";
+    a2[2] = "gd thg";
+    a2[3] = "fh hh";
+    a2[4] = "j78k";
+
+    for(auto i:a2)
+        cout << i << endl;
+
+    cout << endl;
+
+    for(auto i = a2.begin(); i != a2.end(); i++)
+        cout << *i << endl;
 
     return 0;
 }
