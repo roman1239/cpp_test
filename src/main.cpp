@@ -16,6 +16,7 @@
 #include "String.h"
 #include "Car.h"
 #include "Array.h"
+#include "Vector.h"
 
 //for map, you either must specify copmarator fcn and pass it as 3rd template argument
 //or operator < in class
@@ -199,21 +200,21 @@ static int s_alloc_counter = 0;
 
 void* operator new(size_t size)
 {
-    std::cout << "Allocating " << size << " Bytes" << std::endl;
+    //std::cout << "Allocating " << size << " Bytes" << std::endl;
     s_alloc_counter++;
     return malloc(size);
 }
 
 void operator delete(void* ptr, size_t size)
 {
-    std::cout << "Freeing " << size << " Bytes" << std::endl;
+    //std::cout << "Freeing " << size << " Bytes" << std::endl;
     free(ptr);
 }
 
 
 void operator delete(void* ptr)
 {
-    std::cout << "Freeing " << std::endl;
+    //std::cout << "Freeing " << std::endl;
     free(ptr);
 }
 
@@ -225,6 +226,33 @@ std::ostream& operator<<(std::ostream& stream, const String& str)
 
 int main()
 {
+    using namespace std;
+/*
+    vector<int> v1;
+    v1.push_back(12);
+    v1.push_back(22);
+    v1.push_back(32);
+    for(int i = 0; i < v1.size(); i++)
+        cout << v1[i] << " " << endl;
+    cout << endl;
+*/
+    Vector<int> v2;
+    v2.PrintVectorInfo();
+    v2.PushBack(12);
+    v2.PrintVectorInfo();
+    v2.PushBack(22);
+    v2.PrintVectorInfo();
+    v2.PushBack(32);
+    v2.PrintVectorInfo();
+    v2.PushBack(42);
+    v2.PrintVectorInfo();
+    v2.PushBack(52);
+    v2.PrintVectorInfo();
+    for(int i = 0; i < v2.Size(); i++)
+        cout << v2[i] << " " << endl;
+    cout << endl;
+
+
 
 /*
     //Unions members occupie the same memorry
@@ -364,7 +392,7 @@ int main()
     }
 */
 
-    using namespace std;
+    //using namespace std;
 /*
     String str("string");
     String str1(str);
@@ -416,17 +444,18 @@ int main()
     cout << "total allocations: " << s_alloc_counter << endl;
 */
 
+/*
     Array<int, 5> a1;
 
     memset(a1.GetData(), 0, a1.Size()*sizeof(int));
 
-    /*
+
     a1[0] = 0;
     a1[1] = 1;
     a1[2] = 2;
     a1[3] = 3;
     a1[4] = 4;
-*/
+
 
 
     const int val = 17;
@@ -469,7 +498,7 @@ int main()
 
     for(auto i = a2.begin(); i != a2.end(); i++)
         cout << *i << endl;
-
+*/
     return 0;
 }
 
