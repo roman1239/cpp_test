@@ -47,12 +47,31 @@ public:
         return m_size;
     }
 
-    void PushBack(T data)
+    void PushBack(const T& data)
     {
         if(m_size >= m_capacity)
             Realloc(m_capacity + m_capacity/2);
         m_data[m_size] = data;
         m_size++;
+    }
+
+    void PushBack(T&& data)
+    {
+        if(m_size >= m_capacity)
+            Realloc(m_capacity + m_capacity/2);
+        m_data[m_size] = std::move(data);
+        m_size++;
+    }
+
+    template<typename... Args>
+    T& EmplaceBack(Args&&... args)
+    {
+        if(m_size >= m_capacity)
+            Realloc(m_capacity + m_capacity/2);
+
+        m_data[m_size] = T(std::forward<Args>(args)...);
+
+        return m_data[m_size++];
     }
 
     T& operator[](size_t index)
@@ -64,6 +83,17 @@ public:
     {
         std::cout << "size: " << m_size << " capacity: " << m_capacity << std::endl;
     }
+
+    void PopBack()
+    {
+        if(m_size > 0)
+        {
+            m_size--;
+            m_data[m_size].~T();
+        }
+    }
+
+
 };
 
 #endif /* VECTOR_H_ */

@@ -17,6 +17,7 @@
 #include "Car.h"
 #include "Array.h"
 #include "Vector.h"
+#include "Vector3.h"
 
 //for map, you either must specify copmarator fcn and pass it as 3rd template argument
 //or operator < in class
@@ -200,21 +201,21 @@ static int s_alloc_counter = 0;
 
 void* operator new(size_t size)
 {
-    //std::cout << "Allocating " << size << " Bytes" << std::endl;
+    std::cout << "Allocating " << size << " Bytes" << std::endl;
     s_alloc_counter++;
     return malloc(size);
 }
 
 void operator delete(void* ptr, size_t size)
 {
-    //std::cout << "Freeing " << size << " Bytes" << std::endl;
+    std::cout << "Freeing " << size << " Bytes" << std::endl;
     free(ptr);
 }
 
 
 void operator delete(void* ptr)
 {
-    //std::cout << "Freeing " << std::endl;
+    std::cout << "Freeing " << std::endl;
     free(ptr);
 }
 
@@ -236,22 +237,29 @@ int main()
         cout << v1[i] << " " << endl;
     cout << endl;
 */
+
+/*
     Vector<int> v2;
-    v2.PrintVectorInfo();
-    v2.PushBack(12);
-    v2.PrintVectorInfo();
-    v2.PushBack(22);
-    v2.PrintVectorInfo();
-    v2.PushBack(32);
-    v2.PrintVectorInfo();
-    v2.PushBack(42);
-    v2.PrintVectorInfo();
-    v2.PushBack(52);
-    v2.PrintVectorInfo();
+
     for(int i = 0; i < v2.Size(); i++)
         cout << v2[i] << " " << endl;
     cout << endl;
+*/
 
+    Vector<Vector3> v3;
+
+    //v3.EmplaceBack(1.0f,2.0f,3.0f);
+    //v3.EmplaceBack();
+    v3.PushBack(Vector3(1.0f,2.0f,3.0f));
+    v3.PushBack(Vector3());
+
+    //v3.PopBack();
+
+
+    for(int i = 0; i < v3.Size(); i++)
+        cout << v3[i].GetX() << " " <<
+        v3[i].GetY() << " " << v3[i].GetZ() << " " << endl;
+    cout << endl;
 
 
 /*
