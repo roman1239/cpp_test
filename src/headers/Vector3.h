@@ -12,6 +12,7 @@ class Vector3
 {
 private:
     float m_x, m_y, m_z;
+    int *ptr;
 
 public:
     Vector3();

@@ -201,21 +201,21 @@ static int s_alloc_counter = 0;
 
 void* operator new(size_t size)
 {
-    std::cout << "Allocating " << size << " Bytes" << std::endl;
+    //std::cout << "Allocating " << size << " Bytes" << std::endl;
     s_alloc_counter++;
     return malloc(size);
 }
 
 void operator delete(void* ptr, size_t size)
 {
-    std::cout << "Freeing " << size << " Bytes" << std::endl;
+    //std::cout << "Freeing " << size << " Bytes" << std::endl;
     free(ptr);
 }
 
 
 void operator delete(void* ptr)
 {
-    std::cout << "Freeing " << std::endl;
+    //std::cout << "Freeing " << std::endl;
     free(ptr);
 }
 
@@ -248,13 +248,18 @@ int main()
 
     Vector<Vector3> v3;
 
-    //v3.EmplaceBack(1.0f,2.0f,3.0f);
-    //v3.EmplaceBack();
+    v3.EmplaceBack(1.0f,2.0f,3.0f);
+    v3.EmplaceBack();
+
+    v3.PushBack(Vector3(1.0f,2.0f,3.0f));
+    v3.PushBack(Vector3());
+    v3.PushBack(Vector3(1.0f,2.0f,3.0f));
+    v3.PushBack(Vector3());
     v3.PushBack(Vector3(1.0f,2.0f,3.0f));
     v3.PushBack(Vector3());
 
     //v3.PopBack();
-
+    v3.Clear();
 
     for(int i = 0; i < v3.Size(); i++)
         cout << v3[i].GetX() << " " <<
