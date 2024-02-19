@@ -30,12 +30,11 @@
         std::cout << "Vector3: copy ctor" << std::endl;
     }
 
-    Vector3::Vector3(Vector3&& other)
+    Vector3::Vector3(Vector3&& other) :
+        m_x(other.m_x), m_y(other.m_y), m_z(other.m_z)
     {
-        ptr = other.ptr;
-        other.ptr = nullptr;
-        //*this = std::move(other);
-        *this = Vector3((Vector3&&)other);
+        ptr = new int;
+        *ptr = *other.ptr;
         std::cout << "Vector3: move ctor" << std::endl;
     }
 

@@ -253,19 +253,51 @@ int main()
 
     v3.PushBack(Vector3(1.0f,2.0f,3.0f));
     v3.PushBack(Vector3());
-    v3.PushBack(Vector3(1.0f,2.0f,3.0f));
+    v3.PushBack(Vector3(1.0f,2.2f,3.0f));
     v3.PushBack(Vector3());
     v3.PushBack(Vector3(1.0f,2.0f,3.0f));
     v3.PushBack(Vector3());
 
     //v3.PopBack();
-    v3.Clear();
+    //v3.Clear();
 
     for(int i = 0; i < v3.Size(); i++)
         cout << v3[i].GetX() << " " <<
         v3[i].GetY() << " " << v3[i].GetZ() << " " << endl;
     cout << endl;
 
+    Vector<int> vint;
+    vint.PushBack(45);
+    vint.EmplaceBack(14);
+    vint.PushBack(18);
+    vint.PushBack(55);
+    vint.EmplaceBack(91);
+    vint.PopBack();
+    vint.PushBack(0);
+/*
+    for(int i = 0; i < vint.Size(); i++)
+        cout << vint[i] << endl;
+*/
+    //vint.Clear();
+
+/*
+    for(int i = 0; i < vint.Size(); i++)
+        cout << vint[i] << endl;
+*/
+    //Iteratos test
+/*
+    vint[3] = 1;
+
+    for(auto it = vint.begin(); it != vint.end(); it++)
+        cout << *it << " ";
+*/
+    for(auto i:vint)
+        cout << i <<" ";
+    cout << endl;
+/*
+    for(Vector<int>::Iterator it = vint.rbegin(); it != vint.rend(); it--)
+        cout << *it;
+*/
 
 /*
     //Unions members occupie the same memorry
